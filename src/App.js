@@ -19,14 +19,12 @@ function App() {
 	}, []);
 	
 	// 주소에 따라 내용이 달라지는 함수 (13-18)
-
 	const onSubmitHandler = (filter, query) => {
 		console.log(filter, query)
-		// fetch('http://localhost:8080/airport')
-		// .then((res) => res.json()) 
-		// .then((data) => setData(data))
-		// .catch((error) => console.log(error))
-		// .finally(() => setLoading(false))
+		// filter 가 0일 때 => fetch 로 다른 주소 가져오기
+		// filter 가 1일 때 
+		// filter 가 2일 때 
+		// filter 가 3일 때 
 	};
 	
   return (

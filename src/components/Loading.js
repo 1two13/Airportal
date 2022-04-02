@@ -1,11 +1,22 @@
 import styled from "styled-components";
 
+const LoaderBackdrop = styled.div`
+	position: fixed;
+	display: grid; // Loader를 정가운데에 배치할 수 있게 해준다. 
+	place-items: center; // Loader를 정가운데에 배치할 수 있게 해준다. 
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgb(0, 0, 0, 0.03);
+`
+
 const Loader = styled.div`
-  border: 10px solid #f3f3f3; 
-  border-top: 10px solid #22408E; 
+  border: 15px solid #efefef;
+  border-top: 15px solid #8aacc8;
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
   animation: spin 2s linear infinite;
 
 @keyframes spin {
@@ -16,7 +27,9 @@ const Loader = styled.div`
 
 function Loading() {
 	return(
-		<Loader></Loader>
+		<LoaderBackdrop>
+			<Loader></Loader>
+		</LoaderBackdrop>
 	)
 }
 
