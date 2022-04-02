@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import Filter from "./components/Filter";
 import Loading from "./components/Loading";
+import AirportList from "./components/AirportList";
 
 function App() {
-	// 로딩 상태 값
+	// 로딩 상태 값 
 	const [loading, setLoading] = useState(true);
 	// 공항 배열 상태 값
 	const [data, setData] = useState([]);
@@ -17,36 +18,21 @@ function App() {
 		.finally(() => setLoading(false))
 	}, []);
 	
+	// 주소에 따라 내용이 달라지는 함수 (13-18)
+
 	const onSubmitHandler = (filter, query) => {
-		// fetch로 검색하고 공항 배열 상태 변경
 		console.log(filter, query)
+		// fetch('http://localhost:8080/airport')
+		// .then((res) => res.json()) 
+		// .then((data) => setData(data))
+		// .catch((error) => console.log(error))
+		// .finally(() => setLoading(false))
 	};
 	
   return (
 		<div className="App">
 			<Filter onSubmitHandler={onSubmitHandler}/>
-			{loading ? <Loading /> : data !== [] && data.map((el, id) => {
-				return (
-					<div key={id}>
-						<div>{el.IATA}</div>
-						<div>{el.country}</div>
-						<div>{el.korean}</div>
-						<div>{el.english}</div>
-					</div>
-				)}
-			)}
-			
-			{/* 데이터가 잘 들어왔을 때 화면에 보여줄 데이터 */}
-			{data !== [] && data.map((el, id) => {
-				return (
-					<div key={id}>
-						<div>{el.IATA}</div>
-						<div>{el.country}</div>
-						<div>{el.korean}</div>
-						<div>{el.english}</div>
-					</div>
-				)}
-			)}
+			{loading ? <Loading /> : <AirportList data={data} />}
     </div> 
   );
 }

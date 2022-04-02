@@ -27,9 +27,10 @@ function Filter({onSubmitHandler}) {
 			onSubmitHandler(filter, query);
 		}}>
 			<select onChange={filterHandler}>
-				<option value="0">공항이름</option>
 				<option value="1">공항코드</option>
-				<option value="2">나라이름</option>
+				<option value="2">나라</option>
+				<option value="3">위치</option>
+				<option value="0">공항이름</option>
 			</select>
 			<input 
 				onChange={queryHandler}
