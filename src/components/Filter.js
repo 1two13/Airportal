@@ -35,21 +35,22 @@ const StyledFilter = styled.form`
 
 function Filter({onSubmitHandler}) {
 	// select 상태값
-	const [filter, setFilter] = useState();
+	const [filter, setFilter] = useState("0");
 	// input 상태값
-	const [query, setQuery] = useState();
+	const [query, setQuery] = useState("");
 
 	const filterHandler = (event) => {
-		setFilter(event.target.value)
+		setFilter(event.target.value);
 	}
 	const queryHandler = (event) => {
 		setQuery(event.target.value);
 	};
-
+	
 	return (
 		<StyledFilter onSubmit={(event) => {
 			event.preventDefault();
 			onSubmitHandler(filter, query);
+			setQuery("");
 		}}>
 			<select onChange={filterHandler}>
 				<option value="0">공항코드</option>
@@ -59,6 +60,7 @@ function Filter({onSubmitHandler}) {
 			</select>
 			<input 
 				onChange={queryHandler}
+				value={query}
 				type="text"
 				placeholder="공항코드 또는 공항이름을 입력해주세요." 
 				size="35"

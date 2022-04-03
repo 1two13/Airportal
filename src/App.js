@@ -18,13 +18,41 @@ function App() {
 		.finally(() => setLoading(false))
 	}, []);
 	
-	// 주소에 따라 내용이 달라지는 함수 (13-18)
+	// 주소에 따라 데이터가 달라지는 함수 
 	const onSubmitHandler = (filter, query) => {
 		console.log(filter, query)
 		// filter 가 0일 때 => fetch 로 다른 주소 가져오기
+		fetch(`http://localhost:8080/search/code?code=${query}`)
+		.then((res) => res.json()) 
+		.then((data) => {
+			if(filter === "0") return setData(data)
+		})
+		.catch((error) => console.log(error))
+		.finally(() => setLoading(false))
 		// filter 가 1일 때 
+		fetch(`http://localhost:8080/search/country?country=${query}`)
+		.then((res) => res.json()) 
+		.then((data) => {
+			if(filter === "1") return setData(data)
+		})
+		.catch((error) => console.log(error))
+		.finally(() => setLoading(false))
 		// filter 가 2일 때 
+		fetch(`http://localhost:8080/search/location?location=${query}`)
+		.then((res) => res.json()) 
+		.then((data) => {
+			if(filter === "2") return setData(data)
+		})
+		.catch((error) => console.log(error))
+		.finally(() => setLoading(false))
 		// filter 가 3일 때 
+		fetch(`http://localhost:8080/search/name?name=${query}`)
+		.then((res) => res.json()) 
+		.then((data) => {
+			if(filter === "3") return setData(data)
+		})
+		.catch((error) => console.log(error))
+		.finally(() => setLoading(false))
 	};
 	
   return (
