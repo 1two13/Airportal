@@ -7,7 +7,7 @@ import NavBar from "./components/NavBar";
 
 const Application = styled.div`
 	max-width: 800;
-	width: 70%; 
+	width: 75%; 
 	margin: auto;
 `;
 

@@ -2,14 +2,14 @@ import styled from "styled-components";
 
 const StyledAirportList = styled.div`
 	display: flex;
-	justify-content: center;
 	margin-top: 2px;
 	padding-top: 5px;
 
 	span {
-		width: 230px;
+		flex: 1;
+		text-align: center;
 		height: 25px;
-		display: block;
+		display: inline-block;
 		overflow: hidden;
 		text-overflow: ellipsis; // 생략기호(...)를 만들어 준다. 
 		white-space: nowrap;

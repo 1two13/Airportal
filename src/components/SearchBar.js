@@ -3,8 +3,10 @@ import styled from "styled-components";
 
 const StyledFilter = styled.form`
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-evenly;
 	height: 38px;
+	overflow: hidden;
+	white-space: nowrap;
 	
 	* {
 		border: none;
