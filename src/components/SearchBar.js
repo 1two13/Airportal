@@ -34,7 +34,7 @@ const StyledFilter = styled.form`
 	}
 `
 
-function Filter({onSubmitHandler}) {
+function SearchBar({onSubmitHandler}) {
 	// input 상태값
 	const [query, setQuery] = useState("");
 
@@ -60,4 +60,4 @@ function Filter({onSubmitHandler}) {
 	);
 };
 
-export default Filter;
+export default SearchBar;

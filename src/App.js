@@ -1,8 +1,15 @@
 import { useEffect, useState } from "react";
-import Filter from "./components/Filter";
+import styled from "styled-components";
+import SearchBar from "./components/SearchBar";
 import Loading from "./components/Loading";
 import AirportList from "./components/AirportList";
 import NavBar from "./components/NavBar";
+
+const Application = styled.div`
+	max-width: 800;
+	width: 70%; 
+	margin: auto;
+`;
 
 function App() {
 	// 로딩 상태 값 
@@ -28,11 +35,11 @@ function App() {
 	};
 	
   return (
-		<div className="App" style={{maxWidth: 800, width: "70%", margin: "auto"}}>
-			<Filter onSubmitHandler={onSubmitHandler}/>
+		<Application>
+			<SearchBar onSubmitHandler={onSubmitHandler}/>
 			<NavBar />
 			{loading ? <Loading /> : <AirportList data={data} />}
-    </div> 
+    </Application> 
   );
 }
 
