@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Filter from "./components/Filter";
 import Loading from "./components/Loading";
 import AirportList from "./components/AirportList";
+import NavBar from "./components/NavBar";
 
 function App() {
 	// 로딩 상태 값 
@@ -18,46 +19,18 @@ function App() {
 		.finally(() => setLoading(false))
 	}, []);
 	
-	// 주소에 따라 데이터가 달라지는 함수 
-	const onSubmitHandler = (filter, query) => {
-		console.log(filter, query)
-		// filter 가 0일 때 => fetch 로 다른 주소 가져오기
-		fetch(`http://localhost:8080/search/code?code=${query}`)
+	const onSubmitHandler = (query) => {
+		fetch(`http://localhost:8080/search/?query=${query}`)
 		.then((res) => res.json()) 
-		.then((data) => {
-			if(filter === "0") return setData(data)
-		})
+		.then((data) => setData(data))
 		.catch((error) => console.log(error))
-		.finally(() => setLoading(false))
-		// filter 가 1일 때 
-		fetch(`http://localhost:8080/search/country?country=${query}`)
-		.then((res) => res.json()) 
-		.then((data) => {
-			if(filter === "1") return setData(data)
-		})
-		.catch((error) => console.log(error))
-		.finally(() => setLoading(false))
-		// filter 가 2일 때 
-		fetch(`http://localhost:8080/search/location?location=${query}`)
-		.then((res) => res.json()) 
-		.then((data) => {
-			if(filter === "2") return setData(data)
-		})
-		.catch((error) => console.log(error))
-		.finally(() => setLoading(false))
-		// filter 가 3일 때 
-		fetch(`http://localhost:8080/search/name?name=${query}`)
-		.then((res) => res.json()) 
-		.then((data) => {
-			if(filter === "3") return setData(data)
-		})
-		.catch((error) => console.log(error))
-		.finally(() => setLoading(false))
+		.finally(() => setLoading(false))		
 	};
 	
   return (
-		<div className="App">
+		<div className="App" style={{maxWidth: 800, width: "70%", margin: "auto"}}>
 			<Filter onSubmitHandler={onSubmitHandler}/>
+			<NavBar />
 			{loading ? <Loading /> : <AirportList data={data} />}
     </div> 
   );

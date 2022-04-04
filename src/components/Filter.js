@@ -5,20 +5,14 @@ const StyledFilter = styled.form`
 	display: flex;
 	justify-content: space-around;
 	height: 38px;
-	margin-bottom: 10px;
 	
 	* {
 		border: none;
 		border-radius: 5px;
-		outline-color: #baddf9;
+		outline-color: #8aacc8;
 		color: rgb(121, 121, 121);
 		background-color: #fafafa;
 		cursor: pointer;
-	}
-
-	select {
-		width: 150px;
-		flex-grow: 0.5;
 	}
 
 	input {
@@ -28,20 +22,22 @@ const StyledFilter = styled.form`
 	}
 	
 	button {
-		flex-grow: 0.5;
-		background-color: #baddf9;
+		flex-grow: 0.7;
+		background-color: #8aacc8;
+		color: white;
+		font-size: 15px;
+		transition: all 0.9s, color 1;
+
+		&:hover{ 
+			background-color: #82b3c9;
+		}
 	}
 `
 
 function Filter({onSubmitHandler}) {
-	// select 상태값
-	const [filter, setFilter] = useState("0");
 	// input 상태값
 	const [query, setQuery] = useState("");
 
-	const filterHandler = (event) => {
-		setFilter(event.target.value);
-	}
 	const queryHandler = (event) => {
 		setQuery(event.target.value);
 	};
@@ -49,20 +45,14 @@ function Filter({onSubmitHandler}) {
 	return (
 		<StyledFilter onSubmit={(event) => {
 			event.preventDefault();
-			onSubmitHandler(filter, query);
+			onSubmitHandler(query);
 			setQuery("");
 		}}>
-			<select onChange={filterHandler}>
-				<option value="0">공항코드</option>
-				<option value="1">나라</option>
-				<option value="2">위치</option>
-				<option value="3">공항이름</option>
-			</select>
 			<input 
 				onChange={queryHandler}
 				value={query}
 				type="text"
-				placeholder="공항코드 또는 공항이름을 입력해주세요." 
+				placeholder="공항코드 / 공항명 / 나라 / 위치 을(를) 입력해주세요." 
 				size="35"
 			></input>
 			<button>검색</button>

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const StyledAirportList = styled.div`
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 	margin-top: 2px;
 	padding-top: 5px;
 
