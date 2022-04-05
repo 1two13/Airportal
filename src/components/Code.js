@@ -1,11 +1,7 @@
 // /search/code
 function Code() {
-	return(
-		<div>
-			
-		</div>
-	);
-};
+  return <div></div>;
+}
 
 export default Code;
 
