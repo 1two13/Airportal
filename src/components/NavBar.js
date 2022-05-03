@@ -3,13 +3,11 @@ import styled from "styled-components";
 const Nav = styled.div`
   display: flex;
   position: sticky; // 원래 있어야 하는 자리 유지 + 스크롤해도 없어지지 않고 자리 유지
-  top: 0;
+  height: 25px;
+  top: 38px;
   overflow: hidden;
   white-space: nowrap;
-
   align-items: center;
-  height: 25px;
-  margin-top: 2px;
   padding: 3px;
   color: rgb(121, 121, 121);
   background-color: #baddf9;
