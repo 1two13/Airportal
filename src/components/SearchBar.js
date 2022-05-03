@@ -8,7 +8,7 @@ const Filter = styled.form`
   height: 38px;
   position: sticky;
   top: 0px;
-  margin-bottom: 5px;
+  padding: 5px 0;
   background-color: white;
   * {
     border: none;

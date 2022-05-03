@@ -3,13 +3,11 @@ import styled from "styled-components";
 const StyledAirportList = styled.div`
   display: flex;
   margin-top: 2px;
-  padding-top: 5px;
-
+  padding-top: 8px;
   span {
     flex: 1;
     text-align: center;
     height: 25px;
-    display: inline-block;
     overflow: hidden;
     text-overflow: ellipsis; // 생략기호(...)를 만들어 준다.
     white-space: nowrap;

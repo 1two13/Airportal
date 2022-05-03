@@ -4,7 +4,7 @@ const Nav = styled.div`
   display: flex;
   position: sticky; // 원래 있어야 하는 자리 유지 + 스크롤해도 없어지지 않고 자리 유지
   height: 25px;
-  top: 38px;
+  top: 48px;
   overflow: hidden;
   white-space: nowrap;
   align-items: center;
@@ -13,7 +13,6 @@ const Nav = styled.div`
   background-color: #baddf9;
   border-radius: 5px;
   cursor: pointer;
-
   span {
     flex: 1;
     text-align: center;
