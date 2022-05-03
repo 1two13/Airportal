@@ -1,9 +1,15 @@
 import { useEffect, useState } from "react";
-import styled from "styled-components";
+import * as React from "react";
+import { reset } from "styled-reset";
+import styled, { createGlobalStyle } from "styled-components";
 import SearchBar from "./components/SearchBar";
 import Loading from "./components/Loading";
 import AirportList from "./components/AirportList";
 import NavBar from "./components/NavBar";
+
+const GlobalStyles = createGlobalStyle`
+  ${reset}  
+`;
 
 const Application = styled.div`
   max-width: 800;
@@ -25,7 +31,6 @@ function App() {
       .catch((error) => console.log(error))
       .finally(() => setLoading(false));
   }, []);
-
   const onSubmitHandler = (query) => {
     fetch(`http://localhost:8080/search/?query=${query}`)
       .then((res) => res.json())
@@ -35,11 +40,14 @@ function App() {
   };
 
   return (
-    <Application>
-      <SearchBar onSubmitHandler={onSubmitHandler} />
-      <NavBar />
-      {loading ? <Loading /> : <AirportList data={data} />}
-    </Application>
+    <React.Fragment>
+      <GlobalStyles />
+      <Application>
+        <SearchBar onSubmitHandler={onSubmitHandler} />
+        <NavBar />
+        {loading ? <Loading /> : <AirportList data={data} />}
+      </Application>
+    </React.Fragment>
   );
 }
 
