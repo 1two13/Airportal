@@ -28,14 +28,14 @@ function AirportList({ data }) {
     <div>
       {/* 데이터가 잘 들어왔을 때 화면에 보여줄 데이터 */}
       {data !== [] &&
-        data.map((el, id) => {
+        Object.keys(data).map((el, id) => {
           return (
             <StyledAirportList key={id}>
-              <span>{el.IATA}</span>
-              <span>{el.country}</span>
-              <span>{el.location}</span>
-              <span>{el.korean}</span>
-              <span>{el.english}</span>
+              <span>{Object.values(data)[id].IATA}</span>
+              <span>{Object.values(data)[id].country}</span>
+              <span>{Object.values(data)[id].location}</span>
+              <span>{Object.values(data)[id].korean}</span>
+              <span>{Object.values(data)[id].english}</span>
             </StyledAirportList>
           );
         })}
