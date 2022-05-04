@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import * as React from "react";
 import { reset } from "styled-reset";
 import styled, { createGlobalStyle } from "styled-components";
