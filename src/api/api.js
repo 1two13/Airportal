@@ -5,6 +5,8 @@ export const getAirportData = () => {
 };
 
 export const search = (keyWord) => {
+  if (keyWord === null || keyWord === undefined || keyWord === "")
+    return airportData;
   return Object.values(airportData).filter(
     (el) =>
       el.IATA.includes(keyWord?.toUpperCase()) ||

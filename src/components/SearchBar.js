@@ -50,7 +50,6 @@ function SearchBar({ onSubmitHandler }) {
       onSubmit={(event) => {
         event.preventDefault();
         onSubmitHandler(query);
-        setQuery("");
       }}
     >
       <Input
