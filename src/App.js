@@ -5,8 +5,9 @@ import styled, { createGlobalStyle } from "styled-components";
 import SearchBar from "./components/SearchBar";
 import Loading from "./components/Loading";
 import AirportList from "./components/AirportList";
-import NavBar from "./components/NavBar";
+import ItemBar from "./components/ItemBar";
 import { getAirportData, search } from "./api/api";
+import { useNavigate } from "react-router-dom";
 
 const GlobalStyles = createGlobalStyle`
   ${reset}  
@@ -21,8 +22,11 @@ const Application = styled.div`
 function App() {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(getAirportData());
+  const navigate = useNavigate();
   const onSubmitHandler = (keyWord) => {
     const result = search(keyWord);
+    if (keyWord === "") navigate(`/`);
+    else navigate(`/?keyword=${keyWord}`);
     setData(result);
   };
   return (
@@ -30,7 +34,7 @@ function App() {
       <GlobalStyles />
       <Application>
         <SearchBar onSubmitHandler={onSubmitHandler} />
-        <NavBar />
+        <ItemBar />
         {loading ? <Loading /> : <AirportList data={data} />}
       </Application>
     </React.Fragment>
