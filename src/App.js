@@ -6,8 +6,9 @@ import SearchBar from "./components/SearchBar";
 import Loading from "./components/Loading";
 import AirportList from "./components/AirportList";
 import ItemBar from "./components/ItemBar";
-import { getAirportData, search } from "./api/api";
+import { search } from "./api/api";
 import { useNavigate } from "react-router-dom";
+import queryString from "query-string";
 
 const GlobalStyles = createGlobalStyle`
   ${reset}  
@@ -21,7 +22,9 @@ const Application = styled.div`
 
 function App() {
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState(getAirportData());
+  const searchParams = window.location.search; // URL 쿼리 문자열
+  const query = queryString.parse(searchParams);
+  const [data, setData] = useState(search(query.keyword || ""));
   const navigate = useNavigate();
   const onSubmitHandler = (keyWord) => {
     const result = search(keyWord);
@@ -33,7 +36,10 @@ function App() {
     <React.Fragment>
       <GlobalStyles />
       <Application>
-        <SearchBar onSubmitHandler={onSubmitHandler} />
+        <SearchBar
+          onSubmitHandler={onSubmitHandler}
+          initialQuery={query.keyword || ""}
+        />
         <ItemBar />
         {loading ? <Loading /> : <AirportList data={data} />}
       </Application>

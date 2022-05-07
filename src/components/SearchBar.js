@@ -38,9 +38,9 @@ const Button = styled.button`
   }
 `;
 
-function SearchBar({ onSubmitHandler }) {
+function SearchBar({ onSubmitHandler, initialQuery = "" }) {
   // input 상태값
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState(initialQuery);
   const queryHandler = (event) => {
     setQuery(event.target.value);
   };
