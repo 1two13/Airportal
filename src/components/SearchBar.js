@@ -4,7 +4,6 @@ import styled from "styled-components";
 const Filter = styled.form`
   display: flex;
   justify-content: space-evenly;
-  /* white-space: nowrap; */
   height: 38px;
   position: sticky;
   top: 0px;
