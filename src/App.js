@@ -13,9 +13,9 @@ import { ReactComponent as Top } from './assets/top.svg';
 
 function App() {
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState(search(query.keyword || ''));
   const searchParams = window.location.search;
   const query = queryString.parse(searchParams);
+  const [data, setData] = useState(search(query.keyword || ''));
   const navigate = useNavigate();
 
   const onSubmitHandler = (keyWord) => {
