@@ -1,8 +1,22 @@
 import styled from 'styled-components';
 
+function NavBar() {
+  return (
+    <Nav>
+      <span>IATA</span>
+      <span>나라</span>
+      <span>위치</span>
+      <span>공항명(Kr)</span>
+      <span>공항명(En)</span>
+    </Nav>
+  );
+}
+
+export default NavBar;
+
 const Nav = styled.div`
   display: flex;
-  position: sticky; // 원래 있어야 하는 자리 유지 + 스크롤해도 없어지지 않고 자리 유지
+  position: sticky;
   height: 30px;
   top: 48px;
   overflow: hidden;
@@ -18,17 +32,3 @@ const Nav = styled.div`
     line-height: 30px;
   }
 `;
-
-function NavBar() {
-  return (
-    <Nav>
-      <span>IATA</span>
-      <span>나라</span>
-      <span>위치</span>
-      <span>공항명(Kr)</span>
-      <span>공항명(En)</span>
-    </Nav>
-  );
-}
-
-export default NavBar;
