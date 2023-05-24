@@ -22,11 +22,6 @@ function SearchBar({ onSubmitHandler, initialQuery = '' }) {
   const [query, setQuery] = useState(initialQuery);
   const [selectedOption, setSelectedOption] = useState(options[0]);
 
-  useEffect(() => {
-    onSubmitHandler('', ALL);
-    setQuery('');
-  }, []);
-
   const changeOptionHandler = (e) => {
     setSelectedOption(e.value);
   };
