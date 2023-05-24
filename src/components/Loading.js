@@ -1,4 +1,14 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+
+function Loading() {
+  return (
+    <LoaderBackdrop>
+      <Loader></Loader>
+    </LoaderBackdrop>
+  );
+}
+
+export default Loading;
 
 const LoaderBackdrop = styled.div`
   position: fixed;
@@ -28,13 +38,3 @@ const Loader = styled.div`
     }
   }
 `;
-
-function Loading() {
-  return (
-    <LoaderBackdrop>
-      <Loader></Loader>
-    </LoaderBackdrop>
-  );
-}
-
-export default Loading;

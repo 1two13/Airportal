@@ -1,25 +1,6 @@
 import styled from 'styled-components';
 
-const DataList = styled.div`
-  display: flex;
-  height: 35px;
-  span {
-    flex: 1;
-    text-align: center;
-    line-height: 35px;
-    overflow: hidden;
-    text-overflow: ellipsis; // 생략기호(...)를 만들어 준다.
-    white-space: nowrap;
-  }
-  // 홀수번째 자식들에게만 적용되는 CSS
-  :nth-child(odd) {
-    background-color: #eeffff;
-  }
-  // 짝수번째 자식들에게만 적용되는 CSS
-  :nth-child(even) {
-    background-color: #e3f2fd;
-  }
-`;
+
 
 function AirportList({ data }) {
   return (
@@ -42,3 +23,24 @@ function AirportList({ data }) {
 }
 
 export default AirportList;
+
+const DataList = styled.div`
+  display: flex;
+  height: 35px;
+  span {
+    flex: 1;
+    text-align: center;
+    line-height: 35px;
+    overflow: hidden;
+    text-overflow: ellipsis; // 생략기호(...)를 만들어 준다.
+    white-space: nowrap;
+  }
+  // 홀수번째 자식들에게만 적용되는 CSS
+  :nth-child(odd) {
+    background-color: #eeffff;
+  }
+  // 짝수번째 자식들에게만 적용되는 CSS
+  :nth-child(even) {
+    background-color: #e3f2fd;
+  }
+`;
