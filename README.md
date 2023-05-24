@@ -40,11 +40,11 @@ npm start
 
 ## 4. 개발 환경
 
-- 테스트 환경 : Chrome browser
-- IDE : Visual Studio Code 1.71.0 (Universal)
-- 인프라 : Vercel
+- 테스트 환경: Chrome browser
+- IDE: Visual Studio Code 1.71.0 (Universal)
+- 인프라: Vercel
 - 주요 라이브러리
-  - React: 17.0.2
+  - react: 17.0.2
   - styled-components: 5.3.5
   - react-router-dom: 6.3.0
   - react-select: 5.7.3
