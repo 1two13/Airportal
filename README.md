@@ -2,16 +2,16 @@
 
 ## 목차
 
-- 배포링크
-- 주요기능
+- [배포링크](#배포링크)
+- [주요기능](#1-주요기능)
 - 실행방법
 - 개발환경
 - 기술스택
-- 파일구조
+- [파일구조](#5-파일구조)
 
 ## 🔗 [배포링크](https://airportal.vercel.app/)
 
-## 주요기능
+## 1 주요기능
 
 - 검색어 추천 기능
 - `react-select`를 사용하여 셀렉 구현, 선택된 값에 따라 화면에 보여지는 값 변경
@@ -70,7 +70,7 @@ npm start
 
 <code><img src="https://img.shields.io/badge/vercel-000000?style=for-the-badge&logo=Axios&logoColor=white"/></code>
 
-## 파일구조
+## 5 파일구조
 
 ```
  📦public
