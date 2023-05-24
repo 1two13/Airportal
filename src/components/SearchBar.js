@@ -23,6 +23,7 @@ function SearchBar({ onSubmitHandler, initialQuery = '' }) {
   const [selectedOption, setSelectedOption] = useState(options[0]);
 
   useEffect(() => {
+    onSubmitHandler('', ALL);
     setQuery('');
   }, []);
 
