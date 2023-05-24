@@ -20,19 +20,28 @@ function SearchBar({ onSubmitHandler, initialQuery = '' }) {
     { value: AIRPORT_NAME, label: AIRPORT_NAME },
   ];
   const [query, setQuery] = useState(initialQuery);
+  const [selectedOption, setSelectedOption] = useState(options[0]);
 
-  const queryHandler = (event) => {
-    setQuery(event.target.value);
+  const changeOptionHandler = (e) => {
+    setSelectedOption(e.value);
+  };
+
+  const queryHandler = (e) => {
+    setQuery(e.target.value);
   };
 
   return (
     <Filter
-      onSubmit={(event) => {
-        event.preventDefault();
-        onSubmitHandler(query);
+      onSubmit={(e) => {
+        e.preventDefault();
+        onSubmitHandler(query, selectedOption);
       }}
     >
-      <StyledSelect options={options} defaultValue={options[0]} />
+      <StyledSelect
+        options={options}
+        defaultValue={options[0]}
+        onChange={(e) => changeOptionHandler(e)}
+      />
       <Input
         onChange={queryHandler}
         value={query}
