@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { reset } from 'styled-reset';
 import styled, { createGlobalStyle } from 'styled-components';
 import { useNavigate } from 'react-router-dom';
@@ -18,8 +18,8 @@ function App() {
   const [data, setData] = useState(search(query.keyword || ''));
   const navigate = useNavigate();
 
-  const onSubmitHandler = (keyWord) => {
-    const result = search(keyWord);
+  const onSubmitHandler = (keyWord, selected) => {
+    const result = search(keyWord, selected);
 
     if (keyWord === '') navigate(`/`);
     else navigate(`/?keyword=${keyWord}`);

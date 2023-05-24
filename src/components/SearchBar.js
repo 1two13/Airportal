@@ -1,24 +1,57 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import Select from 'react-select';
 import styled from 'styled-components';
 
+import {
+  ALL,
+  IATA,
+  COUNTRY,
+  LOCATION,
+  AIRPORT_NAME,
+  SEARCHBAR_PLACEHOLDER,
+} from '../static/constants';
+
 function SearchBar({ onSubmitHandler, initialQuery = '' }) {
+  const options = [
+    { value: ALL, label: ALL },
+    { value: IATA, label: IATA },
+    { value: COUNTRY, label: COUNTRY },
+    { value: LOCATION, label: LOCATION },
+    { value: AIRPORT_NAME, label: AIRPORT_NAME },
+  ];
   const [query, setQuery] = useState(initialQuery);
-  const queryHandler = (event) => {
-    setQuery(event.target.value);
+  const [selectedOption, setSelectedOption] = useState(options[0]);
+
+  useEffect(() => {
+    onSubmitHandler('', ALL);
+    setQuery('');
+  }, []);
+
+  const changeOptionHandler = (e) => {
+    setSelectedOption(e.value);
+  };
+
+  const queryHandler = (e) => {
+    setQuery(e.target.value);
   };
 
   return (
     <Filter
-      onSubmit={(event) => {
-        event.preventDefault();
-        onSubmitHandler(query);
+      onSubmit={(e) => {
+        e.preventDefault();
+        onSubmitHandler(query, selectedOption);
       }}
     >
+      <StyledSelect
+        options={options}
+        defaultValue={options[0]}
+        onChange={(e) => changeOptionHandler(e)}
+      />
       <Input
         onChange={queryHandler}
         value={query}
         type="text"
-        placeholder="공항코드 / 공항명 / 나라 / 위치 을(를) 입력해주세요."
+        placeholder={SEARCHBAR_PLACEHOLDER}
         size="35"
       ></Input>
       <Button>검색</Button>
@@ -33,24 +66,30 @@ const Filter = styled.form`
   justify-content: space-evenly;
   height: 38px;
   position: sticky;
-  top: 0px;
+  z-index: 99;
   padding: 5px 0;
   background-color: white;
+  top: 0px;
   * {
-    border: none;
     border-radius: 5px;
-    outline-color: #baddf9;
-    color: rgb(121, 121, 121);
-    background-color: #fafafa;
+    border: none;
     cursor: pointer;
   }
+`;
+
+const StyledSelect = styled(Select)`
+  width: 15%;
+  margin-right: 1%;
+  outline-color: #baddf9;
 `;
 
 const Input = styled.input`
   margin-right: 7px;
   flex-grow: 3;
-  top: 0px;
   padding-left: 1%;
+  outline-color: #baddf9;
+  color: rgb(121, 121, 121);
+  background-color: #fafafa;
 `;
 
 const Button = styled.button`
@@ -59,7 +98,6 @@ const Button = styled.button`
   color: white;
   font-size: 15px;
   transition: all 0.9s, color 1;
-  top: 0px;
   &:hover {
     background-color: #82b3c9;
   }
