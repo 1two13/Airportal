@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Select from 'react-select';
 import styled from 'styled-components';
 
@@ -21,6 +21,10 @@ function SearchBar({ onSubmitHandler, initialQuery = '' }) {
   ];
   const [query, setQuery] = useState(initialQuery);
   const [selectedOption, setSelectedOption] = useState(options[0]);
+
+  useEffect(() => {
+    setQuery('');
+  }, []);
 
   const changeOptionHandler = (e) => {
     setSelectedOption(e.value);
