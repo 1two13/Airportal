@@ -16,11 +16,24 @@ export const search = (keyWord, selected) => {
     return data.filter((el) => el.IATA.includes(keyWord?.toUpperCase()));
   }
 
-  if (selected === COUNTRY || selected === LOCATION) {
+  if (selected === COUNTRY) {
     let i = 0;
     let arr = [];
     while (i < data.length) {
       if (data[i].country.includes(keyWord)) {
+        arr.push(data[i]);
+      }
+      i++;
+    }
+
+    return arr;
+  }
+
+  if (selected === LOCATION) {
+    let i = 0;
+    let arr = [];
+    while (i < data.length) {
+      if (data[i].location.includes(keyWord)) {
         arr.push(data[i]);
       }
       i++;
